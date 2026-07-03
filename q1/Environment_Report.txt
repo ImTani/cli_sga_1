@@ -1,0 +1,10 @@
+ls: lists the files and directories in the current folder, showing the q1 to q5 folders.
+whoami: prints the username of the current user, showing that I am root.
+id: shows my user id, group id, and all groups I belong to (root and docker).
+echo $SHELL: prints the path to the current shell, showing that I am using bash.
+pwd: prints the current working directory, which is /root/cli_sga_1.
+ls -la: lists all files and folders in the workspace, including hidden files like .git.
+ping -c 4 google.com: sends 4 packets to google.com to verify internet connectivity, confirming the connection is working.
+
+observations:
+the system is running ubuntu under wsl2 as the root user. the default shell is bash, and we are working inside /root/cli_sga_1. network connectivity is functional and resolved google.com with zero packet loss.

@@ -1,0 +1,14 @@
+echo "original file" > original.txt: creates a test file with some text content.
+ln original.txt hardlink.txt: creates a hard link to original.txt.
+ln -s original.txt symlink.txt: creates a symbolic link pointing to the path of original.txt.
+ls -li original.txt hardlink.txt symlink.txt: shows that original.txt and hardlink.txt share the same inode number (29917) and link count of 2, while symlink.txt has a different inode (29918) and points to original.txt.
+stat original.txt: shows statistics of original.txt, confirming it has inode 29917 and 2 links.
+stat hardlink.txt: shows statistics of hardlink.txt, showing identical inode and link count because it points to the same disk block.
+stat symlink.txt: shows statistics of symlink.txt, showing inode 29918 and link count of 1.
+rm original.txt: deletes the original file.
+cat hardlink.txt: prints the file content successfully because the hard link still points to the active inode.
+cat symlink.txt: fails to read the file because the symbolic link points to a deleted filename, making it broken.
+ls -li hardlink.txt symlink.txt: shows hardlink.txt link count decreased to 1, and symlink.txt is a broken link pointing to the missing original.txt.
+
+observations:
+hard links point directly to the inode, so deleting the original file doesn't affect the data or the hard link. symbolic links point to a file path, so deleting the original file breaks the link and causes file reads to fail.

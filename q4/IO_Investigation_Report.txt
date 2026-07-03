@@ -1,0 +1,13 @@
+lsof | head -20: lists the first 20 open files on the system, showing libraries and directories held by systemd.
+ls -l /proc/$$/fd: lists active file descriptors for the shell, showing 0, 1, and 2 pointing to the terminal pts/3, plus active logs and lock files.
+lsof -p 1: lists all open files and active sockets associated with pid 1 (systemd).
+ls /nonexistent_dir > out.txt 2> err.txt: redirects standard output of a failing command to out.txt and standard error to err.txt.
+cat out.txt: prints nothing because no standard output was generated.
+cat err.txt: prints the error message that was captured by stderr redirection.
+ls /home /nonexistent_dir > combined.txt 2>&1: redirects both standard output and standard error of the command into combined.txt.
+cat combined.txt: prints the merged output showing both the error message and the listing of /home.
+ulimit -a: prints all system resource limits, including max memory size and open files.
+ulimit -n: prints the maximum number of open files (1048576) allowed for the user.
+
+observations:
+linux uses integer file descriptors to manage open resources (0 for stdin, 1 for stdout, 2 for stderr). redirection modifies these descriptors to write to files, and ulimit restricts the maximum number of open files per process to keep the system stable.

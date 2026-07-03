@@ -1,0 +1,7 @@
+lsblk: lists block devices on the system.
+sudo fdisk -l: lists partition details, showing the ramdisks.
+df -h: prints disk space usage in human-readable format, showing sdd (1T) is at 3% usage and Windows drives are at 95%.
+mount | column -t: prints active mounts in formatted columns.
+du -sh /home/* 2>/dev/null: prints disk usage under /home to see what folders take space.
+df -i: prints inode utilization, showing negative numbers for Windows drives.
+vi Storage_Assessment_Report.txt: opens vi editor to write the storage assessment report (which I originally opened as storage_report.txt in the screenshot and later renamed to match the final naming requirement).

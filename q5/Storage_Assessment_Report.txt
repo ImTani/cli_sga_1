@@ -1,0 +1,6 @@
+devices: sda 356.9M, sdb 159.4M, sdc 2G (swap), sdd 1T (mounted on /). ram0-15 are WSL2 internal ram disks.
+mounted filesystems: / on sdd, 1007G total, 3% used. C:, D:, X: mounted via 9p, 95-96% used.
+disk usage: /home/linuxbrew 1.2G, /home/tani 22G.
+inodes: / has 67M inodes, 1% used. Windows drives don't report real inode counts and show negative usage (-999001) due to 9p driver mapping.
+observations: Linux root filesystem is healthy. Windows host drives are near full.
+recommendations: free up space on C: and D:, monitor /home/tani growth, keep app data on native Linux fs not /mnt/c or /mnt/d.
